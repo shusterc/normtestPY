@@ -27,12 +27,10 @@ def test_output_type():
     stats = shapiro_wilk(data_df)
     assert type(stats) == tuple
 
-
 def test_output_tuple_length():
     """check that length of output is two since the tuple always has 2 lists in it"""
     stats = shapiro_wilk(data_df)
     assert len(stats) == 2
-
 
 def test_output_list_length():
     """check that the length of the first list is as <= amount of columns in pd.dataframe"""
@@ -44,18 +42,12 @@ def test_output_lists_equal():
     stats = shapiro_wilk(data)
     assert len(stats[0]) == len(stats[1])
 
-
 def test_input_type():
     """check that the function returns TypeError if the dataframe has no continuous variables"""
     with pytest.raises(TypeError):
         shapiro_wilk(data_df2)
 
-<<<<<<< HEAD
 def calculation_test():
     """check that the shapiro-wilk test statistic is correctly calculated because p-value should be > 0.05"""
-=======
-def test_calculation_test():
-    """check that the shapiro-wilk test statistic is correctly calculated because p-value should be < 0.05"""
->>>>>>> upstream/master
     norm_values = np.random.normal(5, 2, 100)
     assert shapiro_wilk(norm_values)[1] > 0.05
